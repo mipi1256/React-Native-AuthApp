@@ -5,9 +5,9 @@ import Button from '../ui/Button';
 
 const AuthForm = ({ isLogin, onSubmit, credentialsInvalid }) => {
   const [enteredEmail, setEnteredEmail] = useState('');
-  const [enteredName, setEnteredName] = useState('');
+  const [enteredName, setEneteredName] = useState('');
   const [enteredPassword, setEnteredPassword] = useState('');
-  const [enteredConfirmPassword, setEnteredConfirmPassword] = useState('');
+  const [enteredComfirmPassword, setEnteredConfirmPassword] = useState('');
 
   const {
     email: emailIsValid,
@@ -17,14 +17,12 @@ const AuthForm = ({ isLogin, onSubmit, credentialsInvalid }) => {
   } = credentialsInvalid;
 
   const updateInputValueHandler = (inputType, enteredValue) => {
-    //console.log('input-type: ', inputType);
-    //console.log('enteredValue: ', enteredValue);
     switch (inputType) {
       case 'email':
         setEnteredEmail(enteredValue);
         break;
       case 'name':
-        setEnteredName(enteredValue);
+        setEneteredName(enteredValue);
         break;
       case 'password':
         setEnteredPassword(enteredValue);
@@ -42,7 +40,7 @@ const AuthForm = ({ isLogin, onSubmit, credentialsInvalid }) => {
       email: enteredEmail,
       name: enteredName,
       password: enteredPassword,
-      confirmPassword: enteredConfirmPassword,
+      confirmPassword: enteredComfirmPassword,
     });
   };
 
@@ -52,8 +50,8 @@ const AuthForm = ({ isLogin, onSubmit, credentialsInvalid }) => {
         <Input
           label='이메일주소'
           keyboardType='email-address'
-          // bind()는 표준 javascript 함수로, 나중에 실행할 함수를 미리 조정할 수 있게 합니다.
-          // bind()에 제공되는 첫번째 인수는 곧 실행할 함수의 this 키워드로 설정됩니다.
+          // bind()는 표준 javaScript 함수로, 나중에 실행할 함수를 미리 조정할 수 있게 합니다.
+          // bind에 제공되는 첫번째 인수는 곧 실행할 함수의 this 키워드로 설정됩니다.
           // 두 번째 인수는 지정한 함수에 전달할 값을 세팅하면 됩니다.
           onUpdateValue={updateInputValueHandler.bind(this, 'email')}
           isInvalid={emailIsValid}
@@ -76,14 +74,14 @@ const AuthForm = ({ isLogin, onSubmit, credentialsInvalid }) => {
         />
         {!isLogin && (
           <Input
-            label='비민번호 확인'
+            label='비밀번호확인'
             secure
             onUpdateValue={updateInputValueHandler.bind(
               this,
               'confirmPassword',
             )}
             isInvalid={passwordDontMatch}
-            value={enteredConfirmPassword}
+            value={enteredComfirmPassword}
           />
         )}
         <View style={styles.buttons}>
